@@ -1,0 +1,41 @@
+
+<div class="navigation">
+     
+    <select (change)="changeLimit($event)" matTooltip="Cantidad por pagina">
+        @for (limit of limitOptions; track $index) {
+            <option [value]=limit>{{ limit }}</option>
+        }
+    </select>
+    <button (click)="backProducts()" [disabled]="page < 2" matTooltip="Anterior"> 
+        <mat-icon>
+           skip_previous
+       </mat-icon> 
+    </button>
+
+    <button matTooltip="Siguiente" (click)="otherProducts()" [disabled]="metaLastPage == page"> 
+        <mat-icon>
+           skip_next
+       </mat-icon> 
+    </button>
+
+    <!--<button matTooltip="Buscar producto" (click)="searchProduct()"> 
+        <mat-icon>
+           search
+       </mat-icon> 
+    </button>-->
+    
+  <button matTooltip="Pagina">{{page}} </button>
+</div>
+
+
+
+
+
+<div class="container">
+    @for (producto of productos; track producto.id) {
+        <app-product-card
+            class="card"
+            [producto]="producto"
+         />
+    }
+</div>

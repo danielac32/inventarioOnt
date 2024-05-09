@@ -1,0 +1,43 @@
+
+
+ 
+<div class="login-container"> 
+<form class="login" [formGroup]="myForm" (ngSubmit)="onSubmit()" >
+  
+        <h2>{{ data.title}}</h2>
+        @if (submitted && myForm.get('valor')?.hasError('required')){
+	        <div class="error-message" >
+	            campo requerido
+	        </div>
+        }
+        <input type="text" formControlName="valor"   placeholder="valor" required>
+
+
+        @if (submitted && myForm.get('entregado')?.hasError('required')){
+	        <div class="error-message" >
+	            campo requerido
+	        </div>
+        }
+        <input type="text" formControlName="entregado"   placeholder="entregado" required>
+
+        @if (submitted && myForm.get('observacion')?.hasError('required')){
+	        <div class="error-message" >
+	            campo requerido
+	        </div>
+        }
+         <textarea  formControlName="observacion" rows="5" cols="25" placeholder="observacion" required></textarea>
+
+
+         @if (submitted && myForm.get('cedula')?.hasError('required')){
+	        <div class="error-message" >
+	            campo requerido
+	        </div>
+        }
+        <input type="text" formControlName="cedula"   placeholder="cedula" required>
+       
+
+    <button  type="submit" >Actualizar</button>
+    
+</form>
+</div >
+ 

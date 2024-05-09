@@ -1,0 +1,28 @@
+
+<mat-card class="login-container">
+    <h2>Reporte</h2>
+  <form  class="login" [formGroup]="myForm" (ngSubmit)="createReport()">
+
+
+    @if (submitted && myForm.get('startDate')?.hasError('required')){
+        <div class="error-message" >
+            Fecha requerida
+        </div>
+    }
+
+    <input formControlName="startDate" type="date" required />
+    
+    @if (submitted && myForm.get('endDate')?.hasError('required')){
+        <div class="error-message" >
+            Fecha requerida
+        </div>
+    }
+ 
+    <input formControlName="endDate" type="date" required/>
+    
+    
+
+  	<button type="submit">Generar</button>
+  </form>
+</mat-card>
+

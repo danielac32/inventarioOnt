@@ -1,0 +1,12 @@
+<div class="login-container"> 
+<form class="login" [formGroup]="myForm" (ngSubmit)="onSubmit()" >
+        <h2>{{ data.title}}</h2>
+        @if (submitted && myForm.get('categoria')?.hasError('required')){
+	        <div class="error-message" >
+	            Codigo requerido
+	        </div>
+        }
+        <input type="text" required formControlName="categoria" placeholder="Categoria">
+    <button  type="submit" matTooltip="Crear categoria"><mat-icon>add_circle</mat-icon></button>
+</form>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+        <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+           <h2>{{ data.title }}</h2>
+
+           @if (submitted && myForm.get('cantidad')?.hasError('required')){
+          <div class="error-message" >
+              Stock requerido
+          </div>
+        }
+            <input type="number" placeholder="0" class="input-number" formControlName="cantidad">
+            <button type="submit" class="btn" matTooltip="Sumar">
+              <mat-icon>
+                    ads_click
+              </mat-icon>
+            </button>
+        </form>
+</div>

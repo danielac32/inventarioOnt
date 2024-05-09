@@ -1,0 +1,51 @@
+
+
+ 
+<div class="login-container"> 
+<form class="login" [formGroup]="myForm" (ngSubmit)="onSubmit()" >
+  
+        <h2>{{ data.title}}</h2>
+   
+        
+        @if (submitted && myForm.get('descripcion')?.hasError('required')){
+	        <div class="error-message" >
+	            Descripcion requerida
+	        </div>
+        }
+        <textarea required formControlName="descripcion" rows="4" cols="50" placeholder="Descripcion"></textarea>
+
+        
+        @if (submitted && myForm.get('stock')?.hasError('required')){
+	        <div class="error-message" >
+	            Stock requerido
+	        </div>
+        }
+        <input type="number" required formControlName="stock" min="1" max="200" placeholder="stock" />
+
+        @if (submitted && myForm.get('codigo')?.hasError('required')){
+	        <div class="error-message" >
+	            Codigo requerido
+	        </div>
+        }
+        <input type="text" required formControlName="codigo" placeholder="Codigo">
+
+        @if (submitted && myForm.get('categoria')?.hasError('required')){
+	        <div class="error-message" >
+	            Categoria requerida
+	        </div>
+        }
+        <select formControlName="categoria"  >
+            <option value="" disabled selected>Categoria</option>
+            @for (categoria of categorias; track categoria.id) {
+	            <option value="{{ categoria.id }}">{{ categoria.name }}</option>
+	        } @empty {
+	            <option>There are no items.</option>
+	        }      
+        </select>
+ 
+       
+    <button  type="submit" >Crear</button>
+    
+</form>
+</div >
+ 

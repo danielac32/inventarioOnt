@@ -1,0 +1,31 @@
+ 
+
+@if(producto){
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Descripcion: {{ producto.descripcion}}</mat-card-title>
+    <mat-card-subtitle>Categoria: {{ producto.categoria?.name}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Codigo: {{ producto.codigo }}</p>
+    <p>Stock: {{producto.stock }}</p>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button  mat-raised-button matTooltip="Sumar al stock" (click)="addStock(producto.id?.toString())" >
+      <mat-icon>add</mat-icon>
+    </button>
+    <button  mat-raised-button matTooltip="Restar al stock" (click)="subtraStock(producto.id?.toString())">
+      <mat-icon>remove</mat-icon>
+    </button>
+    <button  mat-raised-button matTooltip="Eliminar producto" (click)="delete(producto.id?.toString())">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button  mat-raised-button matTooltip="Detalles" (click)="detail(producto.id?.toString())">
+      <mat-icon>visibility</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
+}
+
+ 

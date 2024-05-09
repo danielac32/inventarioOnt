@@ -117,22 +117,22 @@ export class AuthService {
 }
 
 tokenTimeRemaining(): string {
-  const token = localStorage.getItem('accessToken');
-  if (token) {
+    if(!this.isLoggedIn()) return "";
     try {
-      const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
-      const currentTime = Math.floor(Date.now() / 1000);
-      const timeRemainingInSeconds = expiry - currentTime;
-      return this.formatTime(timeRemainingInSeconds);
+      const token = localStorage.getItem('accessToken');
+      if(token){
+          const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
+          const currentTime = Math.floor(Date.now() / 1000);
+          const timeRemainingInSeconds = expiry - currentTime;
+          return this.formatTime(timeRemainingInSeconds);
+      }else{
+          return '';
+      }
     } catch (error) {
       console.error('Error decoding token:', error);
       return '';
     }
-  } else {
-    return '';
-  }
 }
-
 
 /*
  tokenTimeRemainingInHours(): number {
